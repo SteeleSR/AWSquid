@@ -11,8 +11,6 @@ on:
 
 jobs: 
   build:
-  
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -26,12 +24,16 @@ jobs:
         distribution: 'adopt'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-    
-        
     - name: Build with Gradle
       working-directory: ./backendwebsiteservice
       run: gradle build
     - name: Test with Gradle
       working-directory: ./backendwebsiteservice
       run: SPRING_PROFILES_ACTIVE=staging gradle test
-
+    - name: Docker Build and Push Image
+      uses: mr-smithers-excellent/docker-build-push@v3
+      with:
+        image: apcodurance/awsquid
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
