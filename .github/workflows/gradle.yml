@@ -31,7 +31,7 @@ jobs:
       working-directory: ./backendwebsiteservice
       run: SPRING_PROFILES_ACTIVE=staging gradle test
     - name: Docker Build and Push Image
-      uses: mr-smithers-excellent/docker-build-push@v3
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: apcodurance/awsquid:latest
         registry: docker.io
