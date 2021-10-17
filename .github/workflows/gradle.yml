@@ -30,6 +30,9 @@ jobs:
     - name: Test with Gradle
       working-directory: ./backendwebsiteservice
       run: SPRING_PROFILES_ACTIVE=staging gradle test
+      
+    - name: checkout repo
+      uses: actions/checkout@v2
     - name: Docker Build and Push Image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
