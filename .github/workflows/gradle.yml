@@ -9,9 +9,9 @@ on:
   pull_request:
     branches: [ main ]
 
-defaults:
-  run:
-    working-directory: ./backendwebsiteservice
+# defaults:
+#   run:
+#     working-directory: ./backendwebsiteservice
 
 jobs:
   build:
